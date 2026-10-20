@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo Stamp</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1c1c1e">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+<aside>
+  <h2>Photo Stamp</h2>
+  <label>Upload pictures (multiple)</label>
+  <input type="file" id="files" accept="image/*" multiple>
+
+  <label>Time</label>
+  <input type="text" id="time" value="20:35" placeholder="HH:MM">
+  <label>Date</label>
+  <input type="date" id="date" value="2026-10-18">
+  <label>Date text (shown on photo)</label>
+  <input type="text" id="dateText">
+  <label>Day</label>
+  <input type="text" id="day">
+  <label>Address</label>
+  <input type="text" id="address" value="Balanga City, Bataan">
+  <label>Bottom-right label ("Photo by ...")</label>
+  <input type="text" id="brand" value="My Photos">
+
+  <label>Logo image (bottom-right, optional)</label>
+  <input type="file" id="logoFile" accept="image/*">
+  <label>Badge icon (right strip, optional)</label>
+  <input type="file" id="badgeFile" accept="image/*">
+  <label>Right strip text (after the code)</label>
+  <input type="text" id="sideText" value="Reference photo">
+
+  <button id="regen">New random codes for all</button>
+  <button id="dlAll">Download all (ZIP)</button>
+  <button class="sec" id="clear">Clear photos</button>
+  <button class="sec" id="resetSaved">Delete saved setup</button>
+  <p><small>Portrait 1920x2560, landscape 2560x1920 (automatic). Each photo gets its own random 14-character code. Your setup and photos are saved automatically in this browser.</small></p>
+</aside>
+<main><div id="grid"></div></main>
+
+<script src="app.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('sw.js'));
+  }
+</script>
+</body>
+</html>
